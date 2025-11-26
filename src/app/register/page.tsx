@@ -7,9 +7,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent } from '@/components/ui/card'
 
-export default function Home() {
+export default function RegisterPage() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -20,13 +22,13 @@ export default function Home() {
           FloDoc
         </div>
         
-        {/* Create Admin Account Button */}
-        <Link href="/register">
+        {/* Sign In Button */}
+        <Link href="/">
           <Button 
             variant="outline" 
             className="bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
           >
-            Create Admin Account
+            Sign In
           </Button>
         </Link>
       </header>
@@ -34,16 +36,31 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex flex-col items-center justify-center px-32 py-12">
         <div className="w-full max-w-md">
-          {/* Sign In Card */}
+          {/* Create Account Card */}
           <Card className="bg-white border-gray-200 shadow-sm">
             <CardContent className="p-8">
-              {/* Sign In Title */}
+              {/* Create Account Title */}
               <h1 className="text-3xl font-bold text-center text-gray-900 mb-8">
-                Sign In
+                Create Admin Account
               </h1>
 
-              {/* Sign In Form */}
+              {/* Registration Form */}
               <form className="space-y-6">
+                {/* Name Input */}
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-medium text-gray-700">
+                    Full Name
+                  </Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter your full name"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                  />
+                </div>
+
                 {/* Email Input */}
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-sm font-medium text-gray-700">
@@ -69,25 +86,40 @@ export default function Home() {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
+                    placeholder="Create a password"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                   />
                 </div>
 
-                {/* Sign In Button */}
+                {/* Confirm Password Input */}
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700">
+                    Confirm Password
+                  </Label>
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    placeholder="Confirm your password"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                  />
+                </div>
+
+                {/* Sign Up Button */}
                 <Link href="/home">
                   <Button 
                     type="submit"
                     className="w-full py-3 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-lg transition-colors"
                   >
-                    SIGN IN
+                    CREATE ACCOUNT
                   </Button>
                 </Link>
               </form>
 
-              {/* Social Sign In */}
+              {/* Social Sign Up */}
               <div className="mt-8 space-y-8">
-                {/* Google Sign In */}
+                {/* Google Sign Up */}
                 <Link href="/home">
                   <Button 
                     variant="outline" 
@@ -99,11 +131,11 @@ export default function Home() {
                       <path fill="#6B7280" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
                       <path fill="#6B7280" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                     </svg>
-                    <span className="text-gray-700 font-medium">SIGN IN WITH GOOGLE</span>
+                    <span className="text-gray-700 font-medium">SIGN UP WITH GOOGLE</span>
                   </Button>
                 </Link>
 
-                {/* Microsoft Sign In */}
+                {/* Microsoft Sign Up */}
                 <Link href="/home">
                   <Button 
                     variant="outline" 
@@ -115,27 +147,27 @@ export default function Home() {
                       <path fill="#6B7280" d="M11.4 21.4H2.6v-8.8h8.8v8.8z"/>
                       <path fill="#6B7280" d="M21.4 21.4h-8.8v-8.8h8.8v8.8z"/>
                     </svg>
-                    <span className="text-gray-700 font-medium">SIGN IN WITH MICROSOFT</span>
+                    <span className="text-gray-700 font-medium">SIGN UP WITH MICROSOFT</span>
                   </Button>
                 </Link>
               </div>
 
               {/* Footer Links */}
               <div className="mt-8 flex items-center justify-between text-sm">
-                <Link href="/register">
-                  <Button 
-                    variant="link" 
-                    className="p-0 h-auto text-gray-600 hover:text-gray-800 font-medium"
-                  >
-                    Create Admin Account
-                  </Button>
-                </Link>
                 <Button 
                   variant="link" 
                   className="p-0 h-auto text-gray-600 hover:text-gray-800 font-medium"
                 >
-                  Forgot your password?
+                  Already have an account?
                 </Button>
+                <Link href="/">
+                  <Button 
+                    variant="link" 
+                    className="p-0 h-auto text-gray-600 hover:text-gray-800 font-medium"
+                  >
+                    Sign In
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>
