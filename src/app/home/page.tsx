@@ -154,7 +154,7 @@ export default function HomePage() {
               />
             </div>
 
-            <div className="border-t pt-4">
+            <div className="mb-6">
               <div className="text-sm font-medium text-gray-700 mb-2">Date Range</div>
               <div className="flex gap-4">
                 <div className="flex-1">
@@ -178,7 +178,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="border-t pt-4">
+            {/* Sponsoring Company */}
+            <div className="mb-6">
               <label className="text-sm font-medium text-gray-700 mb-2 block">
                 Sponsoring Company
               </label>
@@ -200,7 +201,42 @@ export default function HomePage() {
               </select>
             </div>
 
-            <div className="border-t pt-4">
+            {/* SETA Type */}
+            <div className="mb-6">
+              <label className="text-sm font-medium text-gray-700 mb-2 block">
+                SETA Type
+              </label>
+              <select
+                value={setaType}
+                onChange={(e) => setSetaType(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+              >
+                <option value="">Select SETA type</option>
+                <option value="serviceseta">Services SETA</option>
+                <option value="educationseta">Education, Training and Development Practices SETA</option>
+                <option value="fasset">Finance, Accounting, Management Consulting SETA</option>
+                <option value="wholesaleseta">Wholesale and Retail SETA</option>
+                <option value="w&rseta">W&R SETA</option>
+                <option value="tllpseta">Transport, Logistics and Supply Chain SETA</option>
+                <option value="mictseta">Media, Information and Communication Technologies SETA</option>
+                <option value="miset">Manufacturing, Engineering and Related Services SETA</option>
+                <option value="agriseta">Agriculture and Nature Conservation SETA</option>
+                <option value="ceta">Construction Education and Training Authority</option>
+                <option value="ealthseta">Health and Welfare Sector Education and Training Authority</option>
+                <option value="pseta">Public Service Sector Education and Training Authority</option>
+                <option value="lgseta">Local Government, Water and Related Services SETA</option>
+                <option value="cathsseta">Culture, Arts, Tourism, Hospitality and Sport Sector Education and Training Authority</option>
+                <option value="etdpseta">Economic and Development Sector Education and Training Authority</option>
+                <option value="inseta">Insurance SETA</option>
+                <option value="bankseta">Banking Sector Education and Training Authority</option>
+                <option value="primaryseta">Primary Agriculture SETA</option>
+                <option value="foodbevseta">Food and Beverages Manufacturing Industry SETA</option>
+                <option value="forestseta">Forestry and Related Industries SETA</option>
+              </select>
+            </div>
+
+            {/* Program Type */}
+            <div className="mb-6">
               <label className="text-sm font-medium text-gray-700 mb-2 block">
                 Program Type
               </label>
@@ -216,7 +252,8 @@ export default function HomePage() {
               </select>
             </div>
 
-            <div className="border-t pt-4">
+            {/* Qualification Type */}
+            <div className="mb-6">
               <label className="text-sm font-medium text-gray-700 mb-2 block">
                 Qualification Type
               </label>
@@ -230,96 +267,59 @@ export default function HomePage() {
               </select>
             </div>
 
-            {qualificationType === 'seta' && (
-              <div className="border-t pt-4">
-                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                  SETA Type
+            {/* Qualification Checkboxes */}
+            <div className="mb-6">
+              <label className="text-sm font-medium text-gray-700 mb-2 block">
+                Qualifications
+              </label>
+              <div className="space-y-3">
+                <label className="flex items-center gap-3 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={selectedQualifications.includes('certified-id')}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedQualifications([...selectedQualifications, 'certified-id'])
+                      } else {
+                        setSelectedQualifications(selectedQualifications.filter(q => q !== 'certified-id'))
+                      }
+                    }}
+                    className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500"
+                  />
+                  <span>Certified IDs</span>
                 </label>
-                <select
-                  value={setaType}
-                  onChange={(e) => setSetaType(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                >
-                  <option value="">Select SETA type</option>
-                  <option value="nqf-level-1">NQF Level 1</option>
-                  <option value="nqf-level-2">NQF Level 2</option>
-                  <option value="nqf-level-3">NQF Level 3</option>
-                  <option value="nqf-level-4">NQF Level 4</option>
-                  <option value="nqf-level-5">NQF Level 5</option>
-                  <option value="nqf-level-6">NQF Level 6</option>
-                  <option value="nqf-level-7">NQF Level 7</option>
-                  <option value="nqf-level-8">NQF Level 8</option>
-                  <option value="nqf-level-9">NQF Level 9</option>
-                  <option value="nqf-level-10">NQF Level 10</option>
-                  <option value="nqf-level-11">NQF Level 11</option>
-                  <option value="nqf-level-12">NQF Level 12</option>
-                  <option value="nqf-level-13">NQF Level 13</option>
-                  <option value="nqf-level-14">NQF Level 14</option>
-                  <option value="nqf-level-15">NQF Level 15</option>
-                  <option value="nqf-level-16">NQF Level 16</option>
-                  <option value="nqf-level-17">NQF Level 17</option>
-                  <option value="nqf-level-18">NQF Level 18</option>
-                  <option value="nqf-level-19">NQF Level 19</option>
-                  <option value="nqf-level-20">NQF Level 20</option>
-                  <option value="nqf-level-21">NQF Level 21</option>
-                </select>
-              </div>
-            )}
-
-            {qualificationType === 'seta' && (
-              <div className="border-t pt-4">
-                <label className="text-sm font-medium text-gray-700 mb-2 block">
-                  Qualifications
+                <label className="flex items-center gap-3 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={selectedQualifications.includes('certified-matric')}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedQualifications([...selectedQualifications, 'certified-matric'])
+                      } else {
+                        setSelectedQualifications(selectedQualifications.filter(q => q !== 'certified-matric'))
+                      }
+                    }}
+                    className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500"
+                  />
+                  <span>Certified Matric</span>
                 </label>
-                <div className="space-y-2">
-                  <label className="flex items-center gap-2 text-sm">
-                    <input
-                      type="checkbox"
-                      checked={selectedQualifications.includes('certified-id')}
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setSelectedQualifications([...selectedQualifications, 'certified-id'])
-                        } else {
-                          setSelectedQualifications(selectedQualifications.filter(q => q !== 'certified-id'))
-                        }
-                      }}
-                      className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500"
-                    />
-                    <span>Certified ID</span>
-                  </label>
-                  <label className="flex items-center gap-2 text-sm">
-                    <input
-                      type="checkbox"
-                      checked={selectedQualifications.includes('certified-matric')}
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setSelectedQualifications([...selectedQualifications, 'certified-matric'])
-                        } else {
-                          setSelectedQualifications(selectedQualifications.filter(q => q !== 'certified-matric'))
-                        }
-                      }}
-                      className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500"
-                    />
-                    <span>Certified Matric</span>
-                  </label>
-                  <label className="flex items-center gap-2 text-sm">
-                    <input
-                      type="checkbox"
-                      checked={selectedQualifications.includes('tertiary-qualification')}
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setSelectedQualifications([...selectedQualifications, 'tertiary-qualification'])
-                        } else {
-                          setSelectedQualifications(selectedQualifications.filter(q => q !== 'tertiary-qualification'))
-                        }
-                      }}
-                      className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500"
-                    />
-                    <span>Tertiary Qualification</span>
-                  </label>
-                </div>
+                <label className="flex items-center gap-3 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={selectedQualifications.includes('qualifications')}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedQualifications([...selectedQualifications, 'qualifications'])
+                      } else {
+                        setSelectedQualifications(selectedQualifications.filter(q => q !== 'qualifications'))
+                      }
+                    }}
+                    className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500"
+                  />
+                  <span>Qualifications</span>
+                </label>
               </div>
-            )}
+            </div>
           </div>
 
           <div className="flex justify-end gap-3 pt-6 border-t">
