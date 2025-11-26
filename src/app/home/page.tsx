@@ -24,7 +24,6 @@ import {
   DialogTitle,
   DialogDescription
 } from '@/components/ui/dialog'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 export default function HomePage() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
@@ -35,7 +34,6 @@ export default function HomePage() {
   const [programType, setProgramType] = useState('')
   const [qualificationType, setQualificationType] = useState('')
   const [setaType, setSetaType] = useState('')
-  const [activeTab, setActiveTab] = useState('computer')
 
   // SETA qualifications mapping
   const setaQualifications: { [key: string]: string[] } = {
@@ -429,22 +427,17 @@ export default function HomePage() {
             </DialogDescription>
           </DialogHeader>
           
-          {/* Tabs */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="computer" className="rounded-full">Upload from Computer</TabsTrigger>
-              <TabsTrigger value="google-drive" className="rounded-full">Upload from Google Drive</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="computer" className="mt-0">
+          {/* Main SETA Agreement Upload Section */}
+          <div className="mb-6">
+            <label className="text-sm font-medium text-gray-700 mb-3 block">
+              Main SETA agreement
+            </label>
+            <div className="grid grid-cols-2 gap-4">
               <div className="text-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
                 <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
                 <p className="text-gray-600 mb-2">Click to upload or drag and drop</p>
                 <p className="text-sm text-gray-500">Files supported: PDF, DOC, DOCX</p>
               </div>
-            </TabsContent>
-            
-            <TabsContent value="google-drive" className="mt-0">
               <div className="text-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
                 <div className="mx-auto h-12 w-12 text-gray-400 mb-4 flex items-center justify-center">
                   <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -454,8 +447,31 @@ export default function HomePage() {
                 <p className="text-gray-600 mb-2">Connect to Google Drive</p>
                 <p className="text-sm text-gray-500">Select files from your Google Drive</p>
               </div>
-            </TabsContent>
-          </Tabs>
+            </div>
+          </div>
+
+          {/* Upload Additional Documents Section */}
+          <div className="mb-6">
+            <label className="text-sm font-medium text-gray-700 mb-3 block">
+              Upload additional documents
+            </label>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="text-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
+                <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+                <p className="text-gray-600 mb-2">Click to upload or drag and drop</p>
+                <p className="text-sm text-gray-500">Files supported: PDF, DOC, DOCX</p>
+              </div>
+              <div className="text-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
+                <div className="mx-auto h-12 w-12 text-gray-400 mb-4 flex items-center justify-center">
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22.27 19.385H1.73A1.73 1.73 0 010 17.655V6.345a1.73 1.73 0 011.73-1.73h20.54A1.73 1.73 0 0124 6.345v11.308a1.73 1.73 0 01-1.73 1.732zM5.769 15.923h8.961v-1.846H5.769v1.846zm-3.692-3.692h8.96v-1.846h-8.96v1.846zm0-3.692h8.96V6.692h-8.96v1.847zm11.653 0h8.962V6.692h-8.962v1.847zm0 3.692h8.962v-1.846h-8.962v1.846z"/>
+                  </svg>
+                </div>
+                <p className="text-gray-600 mb-2">Connect to Google Drive</p>
+                <p className="text-sm text-gray-500">Select files from your Google Drive</p>
+              </div>
+            </div>
+          </div>
 
           <div className="space-y-6">
             <div>
