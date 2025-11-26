@@ -9,8 +9,7 @@ import {
   Plus, 
   User,
   Bell,
-  ChevronDown,
-  Search
+  ChevronDown
 } from 'lucide-react'
 import { 
   DropdownMenu,
@@ -339,10 +338,6 @@ export default function HomePage() {
         </div>
         
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
-            <Search className="w-5 h-5" />
-          </Button>
-          
           <Button variant="ghost" size="sm" className="text-gray-600 hover:text-gray-900">
             <Bell className="w-5 h-5" />
           </Button>
